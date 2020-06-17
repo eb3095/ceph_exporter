@@ -10,7 +10,7 @@ ENV PATH $GOROOT/bin:$PATH
 ENV APPLOC $GOPATH/src/github.com/digitalocean/ceph_exporter
 
 RUN apt-get update && \
-    apt-get install -y apt-transport-https build-essential git curl wget
+    apt-get install -y apt-transport-https build-essential git curl wget gnupg2
 
 RUN wget -q -O- 'https://download.ceph.com/keys/release.asc' | apt-key add -
 RUN echo "deb https://download.ceph.com/debian-luminous bionic main" >> /etc/apt/sources.list
@@ -33,7 +33,7 @@ MAINTAINER Vaibhav Bhembre <vaibhav@digitalocean.com>
 MAINTAINER Eric Benner <ebennerit@gmail.com>
 
 RUN apt-get update && \
-    apt-get install -y apt-transport-https curl wget
+    apt-get install -y apt-transport-https curl wget gnupg2
 RUN wget -q -O- 'https://download.ceph.com/keys/release.asc' | apt-key add -
 RUN echo "deb https://download.ceph.com/debian-luminous bionic main" >> /etc/apt/sources.list && \
     apt-get update && \
