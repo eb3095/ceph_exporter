@@ -1,6 +1,6 @@
 language: go
 sudo: required
-dist: trusty
+dist: bionic
 
 go:
   - 1.13
@@ -28,7 +28,7 @@ script:
   - $HOME/gopath/bin/goveralls -coverprofile=gover.coverprofile -service travis-ci
 
 after_success:
-  - export DOCKER_REPO="digitalocean/ceph_exporter"
+  - export DOCKER_REPO="ebennerv/ceph_exporter"
   - if [ ! -z "$TRAVIS_TAG" ]; then
     docker build -t $DOCKER_REPO:$DOCKER_TAG .;
     docker tag $DOCKER_REPO:$DOCKER_TAG $DOCKER_REPO:latest;
